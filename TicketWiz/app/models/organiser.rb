@@ -1,6 +1,7 @@
 class Organiser < ApplicationRecord
     has_secure_password
     has_many :events 
+    has_many :calendar_events 
 
     validate :password_complexity
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
