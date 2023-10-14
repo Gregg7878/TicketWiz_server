@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: one
+  customer: one
+  ticket_type: MyString
+  price: 9.99
+  purchase_date: 2023-10-14 10:37:25
+
+two:
+  event: two
+  customer: two
+  ticket_type: MyString
+  price: 9.99
+  purchase_date: 2023-10-14 10:37:25

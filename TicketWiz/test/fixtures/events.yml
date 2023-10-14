@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  category: 1
+  image_url: MyString
+  date: 2023-10-14
+  start_time: 2023-10-14 10:36:07
+  end_time: 2023-10-14 10:36:07
+  venue_name: MyString
+  event_location: MyString
+  available_tickets_count: 1
+  organiser: one
+
+two:
+  title: MyString
+  description: MyText
+  category: 1
+  image_url: MyString
+  date: 2023-10-14
+  start_time: 2023-10-14 10:36:07
+  end_time: 2023-10-14 10:36:07
+  venue_name: MyString
+  event_location: MyString
+  available_tickets_count: 1
+  organiser: two
