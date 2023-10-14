@@ -4,7 +4,8 @@ class Organiser < ApplicationRecord
     has_many :calendar_events 
 
     validate :password_complexity
-    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+    validates :phone_number, presence: true, format: { with: /\A\d{10}\z/, message: "should be a 10-digit number" }
+    validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
     validates :age, presence: true, numericality: { greater_than_or_equal_to: 18 }
     validates :first_name, presence: true
     validates :last_name, presence: true 

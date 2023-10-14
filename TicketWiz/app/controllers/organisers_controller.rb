@@ -1,6 +1,6 @@
 class OrganisersController < ApplicationController
-    before_action :authorize_organiser
-    skip_before_action :authorize_organiser, only: [:create] 
+    # before_action :authorize_organiser
+    # skip_before_action :authorize_organiser, only: [:create] 
 
     def show 
         organiser = Organiser.find_by(id: session[:organiser_id]) 
@@ -12,7 +12,7 @@ class OrganisersController < ApplicationController
     end
 
     def create 
-        organiser = Organizer.new(organiser_params)
+        organiser = Organiser.new(organiser_params)
         
         if organiser.save 
           session[:organiser_id] = organiser.id 

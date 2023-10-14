@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
         else
             render json: { error: "not authorized here" }, status: :unauthorized 
         end 
-      end
+      end 
     
       def create 
         customer = Customer.new(customer_params)
@@ -19,7 +19,7 @@ class CustomersController < ApplicationController
           session[:customer_id] = customer.id 
           render json: customer, status: :created 
         else
-          render json: { error: "Not created"}, status: :unauthorized 
+          render json: { error: customer.errors.full_messages }, status: :unauthorized 
         end
       end
     
