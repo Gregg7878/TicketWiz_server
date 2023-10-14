@@ -17,5 +17,11 @@ class TicketsController < ApplicationController
         end
     end
 
+    # display details of a specific ticket by its ID
+    def show
+        @ticket = Ticket.find(params[:id])
+    end
+
+
     
 end
