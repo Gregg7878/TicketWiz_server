@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   belongs_to :organiser
   has_many :tickets
 
+  
    # Validations
    validates :title, presence: true
    validates :date, presence: true
