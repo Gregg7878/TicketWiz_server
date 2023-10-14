@@ -25,4 +25,10 @@ class CalendarEventsController < ApplicationController
         head :no_content
     end
 
+    private
+
+    def calendar_event_params
+        params.require(:calendar_event).permit(:event_id)
+    end
+
 end
