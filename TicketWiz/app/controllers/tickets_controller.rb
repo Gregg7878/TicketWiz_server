@@ -23,5 +23,10 @@ class TicketsController < ApplicationController
     end
 
 
-    
+    # delete a ticket by its ID
+    def destroy
+        @ticket = Ticket.find(params[:id])
+        @ticket.destroy
+        head :no_content
+    end
 end
