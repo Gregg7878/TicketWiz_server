@@ -1,6 +1,6 @@
 class OrganisersController < ApplicationController
-    # before_action :authorize_organiser
-    # skip_before_action :authorize_organiser, only: [:create] 
+    before_action :authorize_organiser
+    skip_before_action :authorize_organiser, only: [:create] 
 
     def show 
         organiser = Organiser.find_by(id: session[:organiser_id]) 
@@ -18,7 +18,7 @@ class OrganisersController < ApplicationController
           session[:organiser_id] = organiser.id 
           render json: organiser, status: :created 
         else
-          render json: { error: "Not created"}, status: :unauthorized 
+          render json: { error: organiser.errors.full_messages }, status: :unauthorized 
         end
     end
 
