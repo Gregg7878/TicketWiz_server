@@ -18,4 +18,11 @@ class CalendarEventsController < ApplicationController
         end
     end
 
+    #delete calendar event by id
+    def destroy
+        @calendar_event = CalendarEvent.find(params[:id])
+        @calendar_event.destroy
+        head :no_content
+    end
+
 end
