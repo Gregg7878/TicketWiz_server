@@ -29,4 +29,10 @@ class TicketsController < ApplicationController
         @ticket.destroy
         head :no_content
     end
+
+    private
+
+    def ticket_params
+        params.require(:ticket).permit(:event_id, :customer_id, :ticket_type, :price, :purchase_date)
+    end
 end
