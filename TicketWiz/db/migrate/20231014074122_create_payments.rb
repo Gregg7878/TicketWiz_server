@@ -7,6 +7,7 @@ class CreatePayments < ActiveRecord::Migration[7.0]
       t.string :status
       t.datetime :timestamp
 
+      
       t.timestamps
     end
     add_index :payments, :transaction_id, unique: true

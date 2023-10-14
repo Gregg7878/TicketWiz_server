@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_074122) do
     t.index ["event_id"], name: "index_calendar_events_on_event_id"
     t.index ["organiser_id"], name: "index_calendar_events_on_organiser_id"
   end
+  
 
   create_table "customers", force: :cascade do |t|
     t.string "first_name"

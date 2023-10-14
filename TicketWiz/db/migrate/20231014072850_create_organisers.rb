@@ -8,6 +8,7 @@ class CreateOrganisers < ActiveRecord::Migration[7.0]
       t.integer :phone_number
       t.integer :age
 
+      
       t.timestamps
     end
   end
