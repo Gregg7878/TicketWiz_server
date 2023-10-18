@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: TicketWiz_production
-  username: TicketWiz
-  password: <%= ENV["TICKETWIZ_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
