@@ -13,8 +13,8 @@ class Organiser < ApplicationRecord
     private
 
     def password_complexity
-        unless password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\.).{6,}$/)
-          errors.add(:password, "must include at least one lowercase letter, one uppercase letter, one digit, one period, and be at least 6 characters long.")
-        end
+      unless password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/)
+        errors.add(:password, "must include at least one uppercase letter, one lowercase letter, one digit, and be at least 6 characters long.")
+      end
     end
 end
