@@ -26,7 +26,7 @@ class Event < ApplicationRecord
     "Tech and Hackathons",
     "Adventure Activities",
     "Cultural",
-    "Virtual",
+    #"Virtual",
     #"Cosplay",
     #"Gaming"
   #]
