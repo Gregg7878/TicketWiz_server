@@ -27,9 +27,14 @@ class TicketsController < ApplicationController
     end
   
     def show
-      @event_date = @ticket.event.date
-      @ticket_price = @ticket.calculate_price
-      render json: @ticket_price
+        @ticket = Ticket.find(params[:id])
+      
+        if @ticket
+          @ticket_price = @ticket.calculate_price
+          render json: { ticket: @ticket, ticket_price: @ticket_price }, status: :ok
+        else
+          render json: { error: "Ticket not found" }, status: :not_found
+        end
     end
   
     def destroy
