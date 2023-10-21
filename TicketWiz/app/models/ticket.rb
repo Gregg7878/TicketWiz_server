@@ -4,7 +4,7 @@ class Ticket < ApplicationRecord
 
   enum ticket_type: { 'MVP' => 'MVP', 'Early Booking' => 'Early Booking', 'Regular' => 'Regular' }
   validates :ticket_type, presence: { message: "must be provided" }, inclusion: { in: %w(MVP Early\ Booking Regular), message: "is not a valid ticket type" }
-validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   after_create :reduce_available_tickets_count
 
@@ -22,7 +22,7 @@ validates :quantity, presence: true, numericality: { only_integer: true, greater
 
     base_price
   end
-
+ 
   private
 
   def reduce_available_tickets_count
@@ -34,5 +34,4 @@ validates :quantity, presence: true, numericality: { only_integer: true, greater
       end
     end
   end
-
 end
