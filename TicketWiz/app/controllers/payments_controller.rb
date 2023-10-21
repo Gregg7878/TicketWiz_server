@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :set_payment, only: [:show, :update, :destroy]
   
   def index
     @payments = Payment.all
@@ -24,13 +24,7 @@ class PaymentsController < ApplicationController
   end
 
   def show
-
-    @payment = Payment.find(params[:id])
     render json: @payment, status: :ok
-  end
-
-
-  def edit
   end
 
   def update
@@ -40,7 +34,6 @@ class PaymentsController < ApplicationController
       render :edit
     end
   end  
-  
 
   def destroy
     @payment.destroy
