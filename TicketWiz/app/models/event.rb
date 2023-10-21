@@ -20,7 +20,7 @@ class Event < ApplicationRecord
     "Art Exhibitions and Galleries",
     "Food and Beverage Events",
     "Theater and Performing Arts",
-    "Community and Charity Events",
+    #"Community and Charity Events",
     #"Parties",
     #"Educational Events",
     #"Tech and Hackathons",
