@@ -12,7 +12,7 @@ class Event < ApplicationRecord
 
    CATEGORIES = [
     "Conferences",
-    #"Workshops and Seminars",
+    "Workshops and Seminars",
     #"Networking Events",
     #"Trade Shows",
     #"Concerts and Music Festivals",
