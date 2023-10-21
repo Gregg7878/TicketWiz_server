@@ -1,7 +1,7 @@
 class Organiser < ApplicationRecord
     has_secure_password
-    has_many :events 
-    has_many :calendar_events 
+    has_many :events, dependent: :destroy
+    has_many :calendar_events,  dependent: :destroy
 
     validate :password_complexity
     validates :phone_number, presence: true, format: { with: /\A\d{10}\z/, message: "should be a 10-digit number" }
