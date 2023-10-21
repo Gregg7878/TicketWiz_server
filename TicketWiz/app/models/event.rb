@@ -14,7 +14,7 @@ class Event < ApplicationRecord
     "Conferences",
     "Workshops and Seminars",
     "Networking Events",
-    "Trade Shows",
+    #"Trade Shows",
     #"Concerts and Music Festivals",
     #"Sporting Events",
     #"Art Exhibitions and Galleries",
