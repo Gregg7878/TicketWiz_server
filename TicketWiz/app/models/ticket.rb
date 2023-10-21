@@ -23,4 +23,16 @@ validates :quantity, presence: true, numericality: { only_integer: true, greater
     base_price
   end
 
+  private
+
+  def reduce_available_tickets_count
+    event = self.event
+    event.with_lock do
+      if event.available_tickets_count > 0
+        event.available_tickets_count -= quantity
+        event.save
+      end
+    end
+  end
+
 end
