@@ -23,7 +23,7 @@ class Event < ApplicationRecord
     "Community and Charity Events",
     "Parties",
     "Educational Events",
-    "Tech and Hackathons",
+    #"Tech and Hackathons",
     #"Adventure Activities",
     #"Cultural",
     #"Virtual",
