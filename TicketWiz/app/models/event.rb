@@ -11,7 +11,7 @@ class Event < ApplicationRecord
    validates :date, date: { after_or_equal_to: -> { Date.current }, message: 'must be in the future' }
 
    CATEGORIES = [
-    #"Conferences",
+    "Conferences",
     #"Workshops and Seminars",
     #"Networking Events",
     #"Trade Shows",
