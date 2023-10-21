@@ -27,7 +27,7 @@ class Event < ApplicationRecord
     "Adventure Activities",
     "Cultural",
     "Virtual",
-    "Cosplay",
+    #"Cosplay",
     #"Gaming"
   #]
 
