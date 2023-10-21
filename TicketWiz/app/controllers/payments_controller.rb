@@ -18,10 +18,18 @@ class PaymentsController < ApplicationController
   
     def create
       @payment = Payment.new(payment_params)
+      @payment.status = 'pending'
       if @payment.save
-        redirect_to @payment, notice: 'Payment was successfully created.'
+          if payment_successful
+            @payment.calculate_amount
+            @payment.set_as_completed
+          else
+            @payment.set_as_failed
+          end
+
+          render json: @payment, status: :created
       else
-        render :new
+        render json: { errors: @payment.errors.full_messages }, status: :unprocessable_entity
       end
     end
   
