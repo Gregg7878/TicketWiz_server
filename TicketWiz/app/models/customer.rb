@@ -1,8 +1,9 @@
 class Customer < ApplicationRecord
     has_secure_password
-    has_many :events  
-    has_many :calendar_events 
-    has_many :tickets   
+    has_many :calendar_events, dependent: :destroy
+    has_many :tickets, dependent: :destroy
+    has_many :events, through: :tickets, dependent: :destroy
+ 
 
     validate :password_complexity
     validates :phone_number, presence: true, format: { with: /\A\d{10}\z/, message: "should be a 10-digit number" }
