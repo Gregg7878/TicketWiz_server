@@ -31,6 +31,6 @@ class Event < ApplicationRecord
     "Gaming"
   ]
 
-  validates :category, inclusion: { in: CATEGORIES }
+  #validates :category, inclusion: { in: CATEGORIES }
 
   end
