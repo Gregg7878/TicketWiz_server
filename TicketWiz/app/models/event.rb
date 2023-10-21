@@ -21,7 +21,7 @@ class Event < ApplicationRecord
     "Food and Beverage Events",
     "Theater and Performing Arts",
     "Community and Charity Events",
-    #"Parties",
+    "Parties",
     #"Educational Events",
     #"Tech and Hackathons",
     #"Adventure Activities",
