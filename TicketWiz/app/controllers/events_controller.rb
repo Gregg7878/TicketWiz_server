@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     
   
     #def show
-        #@events = Event.find(params[:id])
+      @events = Event.find(params[:id])
     end
   
     def new
