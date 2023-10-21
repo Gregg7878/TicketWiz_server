@@ -28,7 +28,7 @@ class Event < ApplicationRecord
     "Cultural",
     "Virtual",
     "Cosplay",
-    #"Gaming"
+    "Gaming"
   #]
 
   #validates :category, inclusion: { in: CATEGORIES }
