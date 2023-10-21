@@ -17,7 +17,7 @@ class Event < ApplicationRecord
     "Trade Shows",
     "Concerts and Music Festivals",
     "Sporting Events",
-    "Art Exhibitions and Galleries",
+    #"Art Exhibitions and Galleries",
    # "Food and Beverage Events",
     #"Theater and Performing Arts",
     #"Community and Charity Events",
