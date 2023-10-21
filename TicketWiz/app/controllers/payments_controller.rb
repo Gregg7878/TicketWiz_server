@@ -56,5 +56,13 @@ class PaymentsController < ApplicationController
   def payment_params
     params.require(:payment).permit(:ticket_id, :amount, :transaction_id, :status, :timestamp)
   end
+
+  def payment_successful
+    # remember to implement ot make api call
+    response = call_mpesa_api_to_check_payment 
+    success_keywords = ['confirmed', 'paid', 'sent']
+    response_body = response['body'].downcase
+    success_keywords.any? { |keyword| response_body.include?(keyword) }
+  end
   
 end
