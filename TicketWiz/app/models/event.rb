@@ -19,7 +19,7 @@ class Event < ApplicationRecord
     "Sporting Events",
     "Art Exhibitions and Galleries",
     "Food and Beverage Events",
-    #"Theater and Performing Arts",
+    "Theater and Performing Arts",
     #"Community and Charity Events",
     #"Parties",
     #"Educational Events",
