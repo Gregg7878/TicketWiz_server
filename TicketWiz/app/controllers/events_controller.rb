@@ -2,7 +2,7 @@ class EventsController < ApplicationController
     before_action :set_event, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user
     
-    def index
+    #def index
       #@events = Event.all
     #end
     
