@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :organiser
-  has_many :tickets
+  has_many :tickets, dependent: :destroy
 
   
    # Validations
