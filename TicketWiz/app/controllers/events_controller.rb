@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
     before_action :set_event, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user
     
     def index
       @events = Event.all
@@ -7,7 +8,7 @@ class EventsController < ApplicationController
     
   
     def show
-        @events = Event.find(params[:id])
+      @events = Event.find(params[:id])
     end
   
     def new
