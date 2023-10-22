@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   
   def index
-    render json: Event.all
+    @events = Event.all
+    render json: @events, each_serializer: EventSerializer
   end
   
   def featured
