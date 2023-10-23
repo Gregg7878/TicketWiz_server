@@ -27,6 +27,10 @@ class PaymentsController < ApplicationController
           flash[:alert] = 'Payment failed.'
           render :new
         end
+      else
+        render :new
+      end
+    end
 
     end
     
