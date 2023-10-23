@@ -1,6 +1,18 @@
 class PaymentsController < ApplicationController
     before_action :set_payment, only: [:show, :edit, :update, :destroy]
     
+    def create
+      @payment = Payment.new(payment_params)
+
+      if @payment.save
+        # Integrate MPESA Lipa Na M-PESA payment here using Ruby::Daraja
+        daraja_config = Daraja::Default.new._app_config
+        daraja_config[:consumer_key] = 'LLFWMCiS8ZkCmSuy98cwGA5pLccse3uA' # Your consumer key
+        daraja_config[:consumer_secret] = 'aiSrhAOigvxAhR2R' # Your consumer secret
+        paybill_client = Daraja::PayBill.new(config: daraja_config, pass_key: 'your_pass_key') # Replace 'your_pass_key'
+
+    end
+    
     def index
       @payments = Payment.all
     end
@@ -15,17 +27,6 @@ class PaymentsController < ApplicationController
       @payment = Payment.new
     end
   
-    def create
-      @payment = Payment.new(payment_params)
-      if @payment.save
-        redirect_to @payment, notice: 'Payment was successfully created.'
-      else
-        render :new
-      end
-    end
-  
-    def edit
-    end
   
     def update
       if @payment.update(payment_params)
