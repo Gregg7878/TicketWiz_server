@@ -19,6 +19,15 @@ class PaymentsController < ApplicationController
           transaction_description: 'transaction description'
         )
 
+        if response['ResponseCode'] == '0' # Payment successful
+          @payment.update(status: 'completed', transaction_id: response['CheckoutRequestID'])
+          redirect_to @payment, notice: 'Payment was successfully created.'
+        else
+          @payment.update(status: 'failed')
+          flash[:alert] = 'Payment failed.'
+          render :new
+        end
+
     end
     
     def index
