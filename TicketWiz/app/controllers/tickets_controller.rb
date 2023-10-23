@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-    before_action :authenticate_user
+    before_action :authenticate_user, only: [:create]
     before_action :set_event, only: [:create]
     before_action :set_ticket, only: [:show, :destroy]
   
@@ -54,6 +54,12 @@ class TicketsController < ApplicationController
   
     def set_ticket
       @ticket = Ticket.find(params[:id])
+    end
+
+    def authenticate_user
+      unless current_customer || current_organizer
+        render json: { error: "Unauthorized" }, status: :unauthorized
+      end
     end
   end
   

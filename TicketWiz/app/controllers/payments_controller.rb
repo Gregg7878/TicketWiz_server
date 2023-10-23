@@ -1,9 +1,10 @@
 class PaymentsController < ApplicationController
+  before_action :authenticate_user, only: [:create]
   before_action :set_payment, only: [:show, :update, :destroy]
   
   def index
     @payments = Payment.all
-    render json: @payments
+    render json: current_user.payments
   end
   
   def create
@@ -58,4 +59,9 @@ class PaymentsController < ApplicationController
     success_keywords.any? { |keyword| response_body.include?(keyword) }
   end
   
+  def authenticate_user
+    unless current_customer || current_organizer
+      render json: { error: "Unauthorized" }, status: :unauthorized
+    end
+  end
 end
