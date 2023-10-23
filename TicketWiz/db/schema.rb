@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
-  create_table "bookings", force: :cascade do |t|
-    t.integer "customer_id"
-    t.date "date"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_bookings_on_customer_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_10_21_141224) do
   create_table "calendar_events", force: :cascade do |t|
     t.integer "event_id", null: false
     t.integer "customer_id", null: false
@@ -45,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "category"
+    t.string "category"
     t.string "image_url"
     t.date "date"
     t.time "start_time"
@@ -56,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
     t.integer "organiser_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
     t.index ["organiser_id"], name: "index_events_on_organiser_id"
   end
 
@@ -104,10 +96,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
     t.integer "event_id", null: false
     t.integer "customer_id", null: false
     t.string "ticket_type"
-    t.decimal "price"
-    t.datetime "purchase_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
     t.index ["customer_id"], name: "index_tickets_on_customer_id"
     t.index ["event_id"], name: "index_tickets_on_event_id"
   end
