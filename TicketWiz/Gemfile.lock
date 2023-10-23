@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/otsembo/ruby-daraja.git
+  revision: 0b0023cf3e714512eb4db69f12186a11e9982de1
+  specs:
+    ruby-daraja (0.1.0.pre.alpha)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -164,6 +170,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.8)
+  ruby-daraja!
   sqlite3 (~> 1.4)
   tzinfo-data
 
@@ -171,4 +178,4 @@ RUBY VERSION
    ruby 2.7.4p191
 
 BUNDLED WITH
-   2.4.19
+   2.4.15
