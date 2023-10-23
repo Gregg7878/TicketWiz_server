@@ -11,6 +11,14 @@ class PaymentsController < ApplicationController
         daraja_config[:consumer_secret] = 'aiSrhAOigvxAhR2R' # Your consumer secret
         paybill_client = Daraja::PayBill.new(config: daraja_config, pass_key: 'your_pass_key') # Replace 'your_pass_key'
 
+        # Initiate Lipa Na M-PESA payment request
+        response = paybill_client.initiate_stk_push(
+          amount: @payment.amount,
+          phone_number: '2547xxxxxxxx', # Get the phone number from your form or params
+          account_reference: 'account reference',
+          transaction_description: 'transaction description'
+        )
+
     end
     
     def index
