@@ -1,6 +1,6 @@
 class CalendarEventsController < ApplicationController
 
-    before_action :authenticate_user
+    before_action :authenticate_user, only: [:create]
 
     # Display a list of calendar events for the current user
     def index
@@ -30,5 +30,11 @@ class CalendarEventsController < ApplicationController
     def calendar_event_params
         params.require(:calendar_event).permit(:event_id)
     end
+
+    def authenticate_user
+        unless current_customer || current_organizer
+          render json: { error: "Unauthorized" }, status: :unauthorized
+        end
+      end
 
 end

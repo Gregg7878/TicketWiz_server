@@ -12,21 +12,16 @@ Rails.application.routes.draw do
   # post "loginOrg", to:"organiser_sessions#create"
   # delete "/logoutOrg", to: "organiser_sessions#destroy"
 
-  # # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # resources :events
-  # resources :payments
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :events
+  resources :payments
+
+  get '/featured_events', to: 'events#featured'
   
-  # # Defines the root path route ("/")
-  # # root "articles#index"
+  # Defines the root path route ("/")
+  # root "articles#index"
 
-  # # resources :calendar_events, only: [:index, :create, :destroy]
-  # # resources :tickets, only: [:index, :create, :show, :destroy]
-
-  resources :customers, only: [:index, :show, :create, :update, :destroy]
-  resources :organisers, only: [:index, :show, :create, :update, :destroy]
-  resources :events, only: [:index, :show, :create, :update, :destroy]
-  resources :tickets, only: [:index, :show, :create, :update, :destroy]
-  resources :calendar_events, only: [:index, :show, :create, :update, :destroy]
-  resources :payments, only: [:index, :show, :create, :update, :destroy]
+  resources :calendar_events, only: [:index, :create, :destroy]
+  resources :tickets, only: [:index, :create, :show, :destroy]
 
 end
