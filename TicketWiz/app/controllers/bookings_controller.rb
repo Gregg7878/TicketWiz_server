@@ -7,6 +7,6 @@ class BookingsController < ApplicationController
     
     def show
         booking = Booking.find(params[:id])
-        render json: booking 
+        render json: booking  
     end
 end
