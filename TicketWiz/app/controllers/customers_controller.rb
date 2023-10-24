@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
         else
             render json: { error: "not authorized here" }, status: :unauthorized 
         end 
-      end 
+      end  
     
       def create 
         customer = Customer.new(customer_params)
