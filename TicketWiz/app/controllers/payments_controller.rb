@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
-<<<<<<< HEAD
     before_action :set_payment, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user, only: [:create]
     
     def create
       @payment = Payment.new(payment_params)
@@ -39,10 +39,6 @@ class PaymentsController < ApplicationController
       @payments = Payment.all
     end
     
-=======
-  before_action :authenticate_user, only: [:create]
-  before_action :set_payment, only: [:show, :update, :destroy]
->>>>>>> f2ce9881346dba569a0bb16dac98acdd6a631857
   
   def index
     @payments = Payment.all
