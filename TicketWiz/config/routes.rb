@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :events
   resources :payments
+  resources :bookings
 
   get '/featured_events', to: 'events#featured'
   
