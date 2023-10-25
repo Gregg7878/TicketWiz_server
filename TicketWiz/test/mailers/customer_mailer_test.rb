@@ -1,7 +1,7 @@
 require "test_helper"
 
 class CustomerMailerTest < ActionMailer::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def welcome_email
+    CustomerMailer.with(customer: Customer.first).welcome_email
+  end
 end
