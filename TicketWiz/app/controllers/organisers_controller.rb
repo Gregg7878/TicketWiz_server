@@ -15,7 +15,8 @@ class OrganisersController < ApplicationController
         organiser = Organiser.new(organiser_params)
         
         if organiser.save 
-          session[:organiser_id] = organiser.id 
+          session[:organiser_id] = organiser.id
+          OrganiserMailer.with(organiser: @organiser).welcome_email.deliver_later 
           render json: organiser, status: :created 
         else
           render json: { error: organiser.errors.full_messages }, status: :unauthorized 
