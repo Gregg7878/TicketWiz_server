@@ -183,14 +183,9 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.12)
-<<<<<<< HEAD
-  bcrypt
-  puma
-=======
   bcrypt (~> 3.1.7)
   pg (~> 1.1)
   puma (~> 5.0)
->>>>>>> 1d6454eb6b2583a99f956051a94d903559d59e3d
   rack-cors
   rails (~> 7.0.8)
   tzinfo-data
