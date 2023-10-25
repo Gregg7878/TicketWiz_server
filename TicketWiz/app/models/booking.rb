@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
     belongs_to :customer
-    has_many :payment
+    has_many :payments
   end
   

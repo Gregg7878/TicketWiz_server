@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_21_141224) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
+  create_table "bookings", force: :cascade do |t|
+    t.integer "customer_id"
+    t.date "date"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_bookings_on_customer_id"
+  end
+
   create_table "calendar_events", force: :cascade do |t|
     t.integer "event_id", null: false
     t.integer "customer_id", null: false
