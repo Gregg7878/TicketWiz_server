@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  
-  # resources :organisers, only: [:create, :show]
-  # resources :customers, only: [:create, :show]
+  resources :mpesas
+
+  # resources :organisers
+  # resources :customers
 
   post "/signupOrg", to: "organisers#create" 
   post "/signup", to: "customers#create" 
@@ -24,7 +25,5 @@ Rails.application.routes.draw do
 
   resources :calendar_events, only: [:index, :create, :destroy]
   resources :tickets, only: [:index, :create, :show, :destroy]
-
- 
 
 end
