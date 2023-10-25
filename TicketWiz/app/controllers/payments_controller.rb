@@ -56,41 +56,9 @@ class PaymentsController < ApplicationController
           @payment.set_as_failed
         end
 
-<<<<<<< HEAD
-        @payments = Payment.find(params[:id])
-    end
-  
-    def new
-      @payment = Payment.new
-    end
-  
-  
-    def update
-      if @payment.update(payment_params)
-        redirect_to @payment, notice: 'Payment was successfully updated.'
-      else
-        render :edit
-      end
-    end
-  
-    def destroy
-      @payment.destroy
-      redirect_to payments_url, notice: 'Payment was successfully destroyed.'
-    end
-  
-    private
-  
-    def set_payment
-      @payment = Payment.find(params[:id])
-    end
-  
-    def payment_params
-      params.require(:payment).permit(:ticket_id, :amount, :transaction_id, :status, :timestamp)
-=======
         render json: @payment, status: :created
     else
       render json: { errors: @payment.errors.full_messages }, status: :unprocessable_entity
->>>>>>> f2ce9881346dba569a0bb16dac98acdd6a631857
     end
   end
 

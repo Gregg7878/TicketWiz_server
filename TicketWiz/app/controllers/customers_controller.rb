@@ -2,6 +2,19 @@ class CustomersController < ApplicationController
     before_action :authorize_customer
     skip_before_action :authorize_customer, only: [:create] 
 
+      def profile
+        customer = Customer.find_by(id: session[:customer_id])
+        if customer
+          render json: {
+            first_name: customer.first_name,
+            last_name: customer.last_name,
+            age: customer.age,
+            email: customer.email
+          }, status: :ok
+        else
+          render json: { error: "Customer not found" }, status: :not_found
+        end
+      end
 
       def show   
         customer = Customer.find_by(id: session[:customer_id]) 
