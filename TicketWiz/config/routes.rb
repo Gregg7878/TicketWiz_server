@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mpesas
 
   # resources :organisers
   # resources :customers
@@ -23,5 +24,9 @@ Rails.application.routes.draw do
 
   resources :calendar_events, only: [:index, :create, :destroy]
   resources :tickets, only: [:index, :create, :show, :destroy]
+
+  #for mpesa
+  post 'stkpush', to: 'mpesas#stkpush'
+  post 'stkquery', to: 'mpesas#stkquery'
 
 end
