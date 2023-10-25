@@ -1,13 +1,13 @@
 class CustomerMailer < ApplicationMailer
-    default from: 'notifications@example.com'
+  default from: 'notifications@Ticketwiz.com'
 
-    def welcome_email
-      @user = params[:user]
-      @url  = 'http://example.com/login'
-      mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+  def welcome_email
+    @customer = params[:customer]
+    @url  = 'http://TicketWiz.com/login'
+    mail(to: @customer.email, subject: 'Welcome to My Awesome Site')
 
-      mail(to: @customer.email,
-         subject: "Please see the Terms and Conditions attached",
-         delivery_method_options: delivery_options)
+    mail(to: @customer.email,
+       subject: "Please see the Terms and Conditions attached",
+       delivery_method_options: delivery_options)
     end
 end
