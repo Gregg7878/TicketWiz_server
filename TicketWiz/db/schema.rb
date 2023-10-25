@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_25_051646) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "access_tokens", force: :cascade do |t|
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "bookings", force: :cascade do |t|
-    t.integer "customer_id"
+    t.bigint "customer_id"
     t.date "date"
     t.string "status"
     t.datetime "created_at", null: false
@@ -21,9 +30,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
   end
 
   create_table "calendar_events", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "customer_id", null: false
-    t.integer "organiser_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "customer_id", null: false
+    t.bigint "organiser_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_calendar_events_on_customer_id"
@@ -53,11 +62,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
     t.string "venue_name"
     t.string "event_location"
     t.integer "available_tickets_count"
-    t.integer "organiser_id", null: false
+    t.bigint "organiser_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price"
     t.index ["organiser_id"], name: "index_events_on_organiser_id"
+  end
+
+  create_table "mpesas", force: :cascade do |t|
+    t.string "phoneNumber"
+    t.string "amount"
+    t.string "checkoutRequestID"
+    t.string "merchantRequestID"
+    t.string "mpesaReceiptNumber"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "new_customers", force: :cascade do |t|
@@ -69,7 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
   end
 
   create_table "new_payments", force: :cascade do |t|
-    t.integer "ticket_id"
+    t.bigint "ticket_id"
     t.integer "amount"
     t.string "transaction_id"
     t.string "status"
@@ -90,7 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer "ticket_id", null: false
+    t.bigint "ticket_id", null: false
     t.integer "amount"
     t.string "transaction_id"
     t.string "status"
@@ -102,8 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_154247) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "customer_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "customer_id", null: false
     t.string "ticket_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
