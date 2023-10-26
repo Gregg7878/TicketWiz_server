@@ -23,6 +23,28 @@ module TicketWiz
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+
+    # Configuration for the application, engines, and railties goes here.
+    
+    config.action_dispatch.cookies_same_site_protection = :strict 
+    config.action_mailer.preview_paths << "#{Rails.root}/lib/mailer_previews"
+    config.action_mailer.default_url_options = { host: 'TicketWiz.com' }
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.example.com',
+      port: 587,
+      domain: 'TicketWiz.com',
+      user_name: 'your_username',
+      password: 'your_password',
+      authentication: :login,
+      enable_starttls_auto: true
+}
+
+
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -35,5 +57,16 @@ module TicketWiz
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    #for mpesa stk
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+      end if File.exists?(env_file)
+    end
+    
   end
 end
+
+
