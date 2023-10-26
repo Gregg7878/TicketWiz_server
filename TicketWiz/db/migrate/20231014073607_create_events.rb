@@ -13,7 +13,6 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       t.integer :available_tickets_count
       t.references :organiser, null: false, foreign_key: true
 
-      
       t.timestamps
     end
   end
