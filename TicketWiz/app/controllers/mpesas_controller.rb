@@ -48,87 +48,87 @@ class MpesasController < ApplicationController
     end
 
 
-    # def stkquery
-    #     url = "https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query"
-    #     timestamp = "#{Time.now.strftime "%Y%m%d%H%M%S"}"
-    #     business_short_code = ENV["MPESA_SHORTCODE"]
-    #     password = Base64.strict_encode64("#{business_short_code}#{ENV["MPESA_PASSKEY"]}#{timestamp}")
-    #     payload = {
-    #     'BusinessShortCode': business_short_code,
-    #     'Password': password,
-    #     'Timestamp': timestamp,
-    #     'CheckoutRequestID': params[:checkoutRequestID]
-    #     }.to_json
-
-    #     headers = {
-    #     Content_type: 'application/json',
-    #     Authorization: "Bearer #{ get_access_token }"
-    #     }
-
-    #     response = RestClient::Request.new({
-    #     method: :post,
-    #     url: url,
-    #     payload: payload,
-    #     headers: headers
-    #     }).execute do |response, request|
-    #     case response.code
-    #     when 500
-    #     [ :error, JSON.parse(response.to_str) ]
-    #     when 400
-    #     [ :error, JSON.parse(response.to_str) ]
-    #     when 200
-    #     [ :success, JSON.parse(response.to_str) ]
-    #     else
-    #     fail "Invalid response #{response.to_str} received."
-    #     end
-    #     end
-    #     render json: response
-    # end
-
     def stkquery
         url = "https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query"
         timestamp = "#{Time.now.strftime "%Y%m%d%H%M%S"}"
         business_short_code = ENV["MPESA_SHORTCODE"]
         password = Base64.strict_encode64("#{business_short_code}#{ENV["MPESA_PASSKEY"]}#{timestamp}")
         payload = {
-          'BusinessShortCode': business_short_code,
-          'Password': password,
-          'Timestamp': timestamp,
-          'CheckoutRequestID': params[:checkoutRequestID]
+        'BusinessShortCode': business_short_code,
+        'Password': password,
+        'Timestamp': timestamp,
+        'CheckoutRequestID': params[:checkoutRequestID]
         }.to_json
-      
+
         headers = {
-          Content_type: 'application/json',
-          Authorization: "Bearer #{get_access_token}"
+        Content_type: 'application/json',
+        Authorization: "Bearer #{ get_access_token }"
         }
-      
+
         response = RestClient::Request.new({
-          method: :post,
-          url: url,
-          payload: payload,
-          headers: headers
+        method: :post,
+        url: url,
+        payload: payload,
+        headers: headers
         }).execute do |response, request|
-          case response.code
-          when 200
-            parsed_response = JSON.parse(response.to_str)
-            payment_status = parsed_response['ResultDesc']
-            response_ids = parsed_response['MerchantRequestID']
-            receipt_number = parsed_response['MpesaReceiptNumber']
-      
-            render json: {
-              status: payment_status,
-              responseIds: response_ids,
-              receiptNumber: receipt_number
-            }
-          when 500
-            render json: { error: "Internal Server Error" }, status: 500
-          when 400
-            render json: { error: "Bad Request" }, status: 400
-          else
-            render json: { error: "Invalid response #{response.to_str} received." }, status: 500
-          end
+        case response.code
+        when 500
+        [ :error, JSON.parse(response.to_str) ]
+        when 400
+        [ :error, JSON.parse(response.to_str) ]
+        when 200
+        [ :success, JSON.parse(response.to_str) ]
+        else
+        fail "Invalid response #{response.to_str} received."
         end
-      end
+        end
+        render json: response
+    end
+
+    # def stkquery
+    #     url = "https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query"
+    #     timestamp = "#{Time.now.strftime "%Y%m%d%H%M%S"}"
+    #     business_short_code = ENV["MPESA_SHORTCODE"]
+    #     password = Base64.strict_encode64("#{business_short_code}#{ENV["MPESA_PASSKEY"]}#{timestamp}")
+    #     payload = {
+    #       'BusinessShortCode': business_short_code,
+    #       'Password': password,
+    #       'Timestamp': timestamp,
+    #       'CheckoutRequestID': params[:checkoutRequestID]
+    #     }.to_json
+      
+    #     headers = {
+    #       Content_type: 'application/json',
+    #       Authorization: "Bearer #{get_access_token}"
+    #     }
+      
+    #     response = RestClient::Request.new({
+    #       method: :post,
+    #       url: url,
+    #       payload: payload,
+    #       headers: headers
+    #     }).execute do |response, request|
+    #       case response.code
+    #       when 200
+    #         parsed_response = JSON.parse(response.to_str)
+    #         payment_status = parsed_response['ResultDesc']
+    #         response_ids = parsed_response['MerchantRequestID']
+    #         receipt_number = parsed_response['MpesaReceiptNumber']
+      
+    #         render json: {
+    #           status: payment_status,
+    #           responseIds: response_ids,
+    #           receiptNumber: receipt_number
+    #         }
+    #       when 500
+    #         render json: { error: "Internal Server Error" }, status: 500
+    #       when 400
+    #         render json: { error: "Bad Request" }, status: 400
+    #       else
+    #         render json: { error: "Invalid response #{response.to_str} received." }, status: 500
+    #       end
+    #     end
+    #   end
       
     
     private
