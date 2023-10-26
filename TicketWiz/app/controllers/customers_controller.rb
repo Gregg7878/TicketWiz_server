@@ -25,6 +25,11 @@ class CustomersController < ApplicationController
         end 
       end  
     
+      def send_test_email
+          CustomerMailer.welcome_email.deliver_now
+      end
+
+    
       def create 
         @customer = Customer.new(customer_params) 
         

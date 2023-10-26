@@ -1,2 +1,12 @@
 class OrganiserMailer < ApplicationMailer
+    default from: 'notifications@Ticketwiz.com'
+
+    def welcome_email
+      @organiser = params[:organiser]
+      @url  = 'http://TicketWiz.com/login'
+      mail(to: @organiser.email, subject: 'Welcome to My Awesome Site')
+
+      mail(to: @organiser.email,
+         subject: "Please see the Terms and Conditions attached",
+         delivery_method_options: delivery_options)
 end

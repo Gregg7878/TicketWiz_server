@@ -29,6 +29,21 @@ module TicketWiz
     # Configuration for the application, engines, and railties goes here.
     
     config.action_dispatch.cookies_same_site_protection = :strict 
+    config.action_mailer.preview_paths << "#{Rails.root}/lib/mailer_previews"
+    config.action_mailer.default_url_options = { host: 'TicketWiz.com' }
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.example.com',
+      port: 587,
+      domain: 'TicketWiz.com',
+      user_name: 'your_username',
+      password: 'your_password',
+      authentication: :login,
+      enable_starttls_auto: true
+}
+
+
 
     # Configuration for the application, engines, and railties goes here.
     #
