@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_25_222142) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_101454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_222142) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
-    t.string "phone_number"
+    t.bigint "phone_number"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_222142) do
 
   create_table "mpesas", force: :cascade do |t|
     t.string "phoneNumber"
-    t.string "amount"
+    t.integer "amount"
     t.string "checkoutRequestID"
     t.string "merchantRequestID"
     t.string "mpesaReceiptNumber"
@@ -88,7 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_222142) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
-    t.integer "phone_number"
+    t.bigint "phone_number"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
