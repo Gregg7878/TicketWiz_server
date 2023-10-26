@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_25_051646) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_25_222142) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_051646) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,24 +77,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_051646) do
     t.string "mpesaReceiptNumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "new_customers", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "phone_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "new_payments", force: :cascade do |t|
+    t.bigint "customer_id"
     t.bigint "ticket_id"
-    t.integer "amount"
-    t.string "transaction_id"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ticket_id"], name: "index_new_payments_on_ticket_id"
+    t.index ["customer_id"], name: "index_mpesas_on_customer_id"
+    t.index ["ticket_id"], name: "index_mpesas_on_ticket_id"
   end
 
   create_table "organisers", force: :cascade do |t|
@@ -106,18 +92,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_051646) do
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "payments", force: :cascade do |t|
-    t.bigint "ticket_id", null: false
-    t.integer "amount"
-    t.string "transaction_id"
-    t.string "status"
-    t.datetime "timestamp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ticket_id"], name: "index_payments_on_ticket_id"
-    t.index ["transaction_id"], name: "index_payments_on_transaction_id", unique: true
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -136,8 +110,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_051646) do
   add_foreign_key "calendar_events", "events"
   add_foreign_key "calendar_events", "organisers"
   add_foreign_key "events", "organisers"
-  add_foreign_key "new_payments", "tickets"
-  add_foreign_key "payments", "tickets"
+  add_foreign_key "mpesas", "customers"
+  add_foreign_key "mpesas", "tickets"
   add_foreign_key "tickets", "customers"
   add_foreign_key "tickets", "events"
 end

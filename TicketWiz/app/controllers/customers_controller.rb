@@ -2,6 +2,19 @@ class CustomersController < ApplicationController
     before_action :authorize_customer
     skip_before_action :authorize_customer, only: [:create] 
 
+      def profile
+        customer = Customer.find_by(id: session[:customer_id])
+        if customer
+          render json: {
+            first_name: customer.first_name,
+            last_name: customer.last_name,
+            age: customer.age,
+            email: customer.email
+          }, status: :ok
+        else
+          render json: { error: "Customer not found" }, status: :not_found
+        end
+      end
 
       def show   
         customer = Customer.find_by(id: session[:customer_id]) 
@@ -18,17 +31,18 @@ class CustomersController < ApplicationController
 
     
       def create 
-        customer = Customer.new(customer_params)
+        @customer = Customer.new(customer_params) 
         
-        if customer.save 
-          session[:customer_id] = customer.id
+        if @customer.save 
+          session[:customer_id] = @customer.id
           CustomerMailer.with(customer: @customer).welcome_email.deliver_later
- 
-          render json: customer, status: :created 
+      
+          render json: @customer, status: :created 
         else
-          render json: { error: customer.errors.full_messages }, status: :unauthorized 
+          render json: { error: @customer.errors.full_messages }, status: :unauthorized
         end
       end
+      
     
     
       private 

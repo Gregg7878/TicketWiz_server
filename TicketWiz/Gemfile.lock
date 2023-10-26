@@ -123,6 +123,7 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
+    pg (1.5.4)
     puma (5.6.7)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -186,6 +187,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.12)
   bcrypt (~> 3.1.7)
   faraday
+  pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.8)
