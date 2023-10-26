@@ -46,11 +46,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_model_serializers (0.10.14)
-      actionpack (>= 4.1)
-      activemodel (>= 4.1)
-      case_transform (>= 0.2)
-      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (7.0.8)
       activesupport (= 7.0.8)
       globalid (>= 0.3.6)
@@ -71,30 +66,23 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    base64 (0.1.1)
     bcrypt (3.1.19)
     builder (3.2.4)
-    case_transform (0.2)
-      activesupport
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
+    debug (1.8.0)
+      irb (>= 1.5.0)
+      reline (>= 0.3.1)
     erubi (1.12.0)
-    faraday (2.7.11)
-      base64
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    http-accept (1.7.0)
-    http-cookie (1.0.5)
-      domain_name (~> 0.5)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    jsonapi-renderer (0.2.2)
+    io-console (0.6.0)
+    irb (1.8.2)
+      rdoc
+      reline (>= 0.3.8)
     loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -105,9 +93,6 @@ GEM
       net-smtp
     marcel (1.0.2)
     method_source (1.0.0)
-    mime-types (3.5.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.1003)
     mini_mime (1.1.5)
     minitest (5.20.0)
     net-imap (0.4.1)
@@ -119,11 +104,12 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    netrc (0.11.0)
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.4)
+    psych (5.1.1)
+      stringio
     puma (5.6.7)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -161,20 +147,15 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
-    ruby2_keywords (0.0.5)
-    sqlite3 (1.6.7-x86_64-linux)
+    rdoc (6.5.0)
+      psych (>= 4.0.0)
+    reline (0.3.9)
+      io-console (~> 0.5)
+    stringio (3.0.8)
     thor (1.2.2)
     timeout (0.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.8.2)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -184,15 +165,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  active_model_serializers (~> 0.10.12)
-  bcrypt (~> 3.1.7)
-  faraday
+  bcrypt
+  debug
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.8)
-  rest-client
-  sqlite3
   tzinfo-data
 
 RUBY VERSION
