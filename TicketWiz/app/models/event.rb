@@ -30,7 +30,7 @@ class Event < ApplicationRecord
    #validates :start_time, presence: true
    #validates :end_time, presence: true
    #validate :date_must_be_in_future
-   #validates :date, date: { after_or_equal_to: -> { Date.current }, message: 'must be in the future' }
+   validates :date, date: { after_or_equal_to: -> { Date.current }, message: 'must be in the future' }
    validates :category, inclusion: { in: CATEGORIES }
 
   end
