@@ -35,7 +35,7 @@ class CustomersController < ApplicationController
         
         if @customer.save 
           session[:customer_id] = @customer.id
-          CustomerMailer.with(customer: @customer).welcome_email.deliver_later
+          # CustomerMailer.with(customer: @customer).welcome_email.deliver_later
       
           render json: @customer, status: :created 
         else

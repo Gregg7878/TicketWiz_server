@@ -1,4 +1,4 @@
-class CustomerMailer < ApplicationMailer
+<%# class CustomerMailer < ApplicationMailer
 
   
   default from: 'notifications@Ticketwiz.com'
@@ -18,4 +18,4 @@ class CustomerMailer < ApplicationMailer
     def mark_delivered
       params[:feedback].touch(:delivered_at)
     end
-end
+end %>

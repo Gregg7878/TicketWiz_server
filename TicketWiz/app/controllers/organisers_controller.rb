@@ -16,7 +16,7 @@ class OrganisersController < ApplicationController
         
         if @organiser.save 
           session[:organiser_id] = @organiser.id
-          OrganiserMailer.with(organiser: @organiser).welcome_email.deliver_later 
+          # OrganiserMailer.with(organiser: @organiser).welcome_email.deliver_later 
           render json: @organiser, status: :created 
         else
           render json: { error: @organiser.errors.full_messages }, status: :unauthorized 

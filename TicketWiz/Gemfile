@@ -45,4 +45,7 @@ gem 'faraday'
 # gem 'ruby-daraja', git: 'https://github.com/otsembo/ruby-daraja.git'
 # gem 'ruby-daraja', github: 'otsembo/ruby-daraja'
 
+gem 'actionmailer'
+
+
 
