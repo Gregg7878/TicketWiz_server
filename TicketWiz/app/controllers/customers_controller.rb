@@ -26,17 +26,18 @@ class CustomersController < ApplicationController
       end  
     
       def create 
-        customer = Customer.new(customer_params)
+        @customer = Customer.new(customer_params) 
         
-        if customer.save 
-          session[:customer_id] = customer.id
+        if @customer.save 
+          session[:customer_id] = @customer.id
           CustomerMailer.with(customer: @customer).welcome_email.deliver_later
- 
-          render json: customer, status: :created 
+      
+          render json: @customer, status: :created 
         else
-          render json: { error: customer.errors.full_messages }, status: :unauthorized 
+          render json: { error: @customer.errors.full_messages }, status: :unauthorized
         end
       end
+      
     
     
       private 
