@@ -26,7 +26,7 @@ class Event < ApplicationRecord
   
    # Validations
    #validates :title, presence: true
-   #validates :date, presence: true
+   validates :date, presence: true
    validates :start_time, presence: true
    validates :end_time, presence: true
    validate :date_must_be_in_future
