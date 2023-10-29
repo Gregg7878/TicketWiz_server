@@ -21,28 +21,39 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create!(event_params)
+    @event = Event.new(event_params)
+    @event.organiser_id = session[:organiser_id]
+  
     if @event.save
       render json: @event, status: :created
     else
-      render :new
+      render json: { error: @event.errors.full_messages }, status: :unprocessable_entity
     end
   end
+  
 
   def edit
   end
 
-  def update
-    if @event.update(event_params)
-      render json: @event, status: :accepted
+  def destroy
+   if @event.organiser_id == session[:organiser_id]
+      @event.destroy
+      head :no_content
     else
-      render :edit
+      render json: { error: 'Not authorized to delete this event' }, status: :unauthorized
     end
   end
 
-  def destroy
-    @event.destroy
-    head :no_content
+  def update
+   if @event.organiser_id == session[:organiser_id]
+      if @event.update(event_params)
+        render json: @event, status: :accepted
+      else
+        render json: { error: @event.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Not authorized to update this event' }, status: :unauthorized
+    end
   end
 
   private

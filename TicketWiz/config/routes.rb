@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   get '/featured_events', to: 'events#featured'
 
   post "stkpush", to: "mpesas#stkpush"
+
+  get '/organiser_dashboard', to: 'organisers#dashboard'
+
+
   
   # Defines the root path route ("/")
   # root "articles#index"
