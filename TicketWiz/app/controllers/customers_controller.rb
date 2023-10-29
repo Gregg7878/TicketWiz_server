@@ -27,10 +27,11 @@ class CustomersController < ApplicationController
     private 
 
     def customer_params 
-      params.require(:customer).permit(:first_name, :last_name, :password, :email, :phone_number, :age)
+      params.permit(:first_name, :last_name, :password, :email, :phone_number, :age)
     end    
 
     def authorize_customer 
       return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :customer_id
     end
 end
+

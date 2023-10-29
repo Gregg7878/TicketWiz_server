@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   post "/signupOrg", to: "organisers#create" 
   post "loginOrg", to:"organiser_sessions#create"
   delete "/logoutOrg", to: "organiser_sessions#destroy"
-  get '/customer_profile', to: 'customers#profile'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
