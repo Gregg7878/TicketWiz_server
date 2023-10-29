@@ -8,6 +8,7 @@ class CustomersController < ApplicationController
         if customer
             render json: customer, status: :created 
         else
+          
             render json: { error: "not authorized here" }, status: :unauthorized 
         end 
       end 
