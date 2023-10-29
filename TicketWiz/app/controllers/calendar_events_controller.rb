@@ -34,3 +34,4 @@ class CalendarEventsController < ApplicationController
     end
 
 end
+

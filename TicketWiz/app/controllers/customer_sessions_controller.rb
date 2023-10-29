@@ -16,3 +16,4 @@ class CustomerSessionsController < ApplicationController
         head :no_content
     end
 end
+

@@ -37,3 +37,4 @@ class TicketsController < ApplicationController
         params.require(:ticket).permit(:event_id, :customer_id, :ticket_type, :price, :purchase_date)
     end
 end
+

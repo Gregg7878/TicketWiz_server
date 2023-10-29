@@ -15,7 +15,7 @@
 # gem "pg"
 #
 default: &default
-  adapter: sqlite3 
+  adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
@@ -81,7 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: mysite_production
-  username: mysite
-  password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>

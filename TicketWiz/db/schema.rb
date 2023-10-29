@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_14_074122) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_172100) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "calendar_events", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "customer_id", null: false
-    t.integer "organiser_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "customer_id", null: false
+    t.bigint "organiser_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_calendar_events_on_customer_id"
@@ -27,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_074122) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
-    t.integer "phone_number"
+    t.bigint "phone_number"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_074122) do
     t.string "venue_name"
     t.string "event_location"
     t.integer "available_tickets_count"
-    t.integer "organiser_id", null: false
+    t.bigint "organiser_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organiser_id"], name: "index_events_on_organiser_id"
@@ -55,14 +58,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_074122) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
-    t.integer "phone_number"
+    t.bigint "phone_number"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer "ticket_id", null: false
+    t.bigint "ticket_id", null: false
     t.integer "amount"
     t.string "transaction_id"
     t.string "status"
@@ -74,8 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_074122) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "customer_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "customer_id", null: false
     t.string "ticket_type"
     t.decimal "price"
     t.datetime "purchase_date"
