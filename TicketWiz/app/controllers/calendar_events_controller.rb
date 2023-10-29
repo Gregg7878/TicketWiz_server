@@ -5,6 +5,7 @@ class CalendarEventsController < ApplicationController
     # Display a list of calendar events for the current user
     def index
         @calendar_events = current_user.calendar_events
+        
     end
 
     # Create a calendar event for the current user
