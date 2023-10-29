@@ -3,7 +3,8 @@ class OrganiserSessionsController < ApplicationController
         organiser = Organiser.find_by(email: params[:email])
         if organiser&.authenticate(params[:password])
             session[:organiser_id] = organiser.id 
-            render json: organiser    
+            render json: organiser 
+               
         
         else
             errors = ["Invalid email or password"]

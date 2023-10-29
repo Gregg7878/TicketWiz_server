@@ -5,6 +5,7 @@ class TicketsController < ApplicationController
     # display list of tickets for current user
     def index
         @tickets = current_user.tickets
+        
     end
 
     # create a new ticket

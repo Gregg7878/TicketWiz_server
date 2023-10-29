@@ -6,6 +6,7 @@ class OrganisersController < ApplicationController
         organiser = Organiser.find_by(id: session[:organiser_id]) 
         if organiser
             render json: organiser 
+            
         else
             render json: { error: "not authorized here" }, status: :unauthorized 
         end 

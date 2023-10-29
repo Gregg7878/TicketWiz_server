@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
     before_action :authenticate_customer
     def index
       @payments = Payment.all
+      
     end
     
   
