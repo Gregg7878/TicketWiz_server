@@ -23,28 +23,31 @@ module TicketWiz
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+<<<<<<<<< Temporary merge branch 1
+=========
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
 
     # Configuration for the application, engines, and railties goes here.
     
-    config.action_dispatch.cookies_same_site_protection = :strict 
-    config.action_mailer.preview_paths << "#{Rails.root}/lib/mailer_previews"
-    config.action_mailer.default_url_options = { host: 'TicketWiz.com' }
+#     config.action_dispatch.cookies_same_site_protection = :strict 
+#     config.action_mailer.preview_paths << "#{Rails.root}/lib/mailer_previews"
+#     config.action_mailer.default_url_options = { host: 'TicketWiz.com' }
 
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      address: 'smtp.example.com',
-      port: 587,
-      domain: 'TicketWiz.com',
-      user_name: 'your_username',
-      password: 'your_password',
-      authentication: :login,
-      enable_starttls_auto: true
-}
+#     config.action_mailer.delivery_method = :smtp
+#     config.action_mailer.smtp_settings = {
+#       address: 'smtp.example.com',
+#       port: 587,
+#       domain: 'TicketWiz.com',
+#       user_name: 'your_username',
+#       password: 'your_password',
+#       authentication: :login,
+#       enable_starttls_auto: true
+# }
 
 
 
+>>>>>>>>> Temporary merge branch 2
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
