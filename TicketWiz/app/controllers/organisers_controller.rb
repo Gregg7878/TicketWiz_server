@@ -3,8 +3,6 @@ class OrganisersController < ApplicationController
   skip_before_action :authorize_organiser, only: [:create] 
   before_action :authorize_organiser
   skip_before_action :authorize_organiser, only: [:create] 
-  before_action :authorize_organiser
-  skip_before_action :authorize_organiser, only: [:create] 
 
   def show 
       organiser = Organiser.find_by(id: session[:organiser_id]) 
@@ -14,17 +12,6 @@ class OrganisersController < ApplicationController
           render json: { error: "not authorized here" }, status: :unauthorized 
       end 
   end
-
-  def dashboard
-    organiser = Organiser.find_by(id: session[:organiser_id])
-    if organiser
-      @events = organiser.events
-      render json: @events
-    else
-      render json: { error: "Not authorized here" }, status: :unauthorized
-    end
-  end
-
 
   def create 
       organiser = Organiser.new(organiser_params)
@@ -41,14 +28,7 @@ class OrganisersController < ApplicationController
   def organiser_params 
     params.permit(:first_name, :last_name, :password, :email, :phone_number, :age) 
   end
-  private
-  def organiser_params 
-    params.permit(:first_name, :last_name, :password, :email, :phone_number, :age) 
-  end
 
-  def authorize_organiser
-    return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :organiser_id
-  end
   def authorize_organiser
     return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :organiser_id
   end

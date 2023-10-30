@@ -74,5 +74,5 @@
 # payment2 = Payment.create(ticket_id: ticket2.id, amount: ticket2.calculate_price * ticket2.quantity, status: 'completed', transaction_id: SecureRandom.uuid, timestamp: Time.now)
 # payment3 = Payment.create(ticket_id: ticket3.id, amount: ticket3.calculate_price * ticket3.quantity, status: 'completed', transaction_id: SecureRandom.uuid, timestamp: Time.now)
 
-puts "✅ Data successfully seeded!"
-end
+# puts "✅ Data successfully seeded!"
+# end

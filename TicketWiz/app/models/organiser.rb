@@ -1,7 +1,4 @@
 class Organiser < ApplicationRecord
-  has_secure_password
-  has_many :events, dependent: :destroy
-  has_many :calendar_events,  dependent: :destroy
     has_secure_password
     has_many :events, dependent: :destroy
     has_many :calendar_events,  dependent: :destroy
@@ -20,5 +17,4 @@ class Organiser < ApplicationRecord
         errors.add(:password, "must include at least one uppercase letter, one lowercase letter, one digit, and be at least 6 characters long.")
       end
     end
-  end
 end
