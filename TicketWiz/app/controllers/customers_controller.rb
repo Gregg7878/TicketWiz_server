@@ -30,6 +30,14 @@ class CustomersController < ApplicationController
       render json: customer_events, status: :ok
     end
   
+    def ticket_wallet
+      ticket_data = Ticket.where(customer_id: session[:customer_id])
+      ticket_wallet_data = ticket_data.map do |ticket|
+        { event_name: ticket.event.title, event_category: ticket.event.category, ticket_type: ticket.ticket_type }
+      end
+  
+      render json: ticket_wallet_data, status: :ok
+    end
   
     private 
 

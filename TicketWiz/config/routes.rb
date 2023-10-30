@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   get '/event_history', to: 'customers#event_history'
 
+  get '/ticket_wallet', to: 'customers#ticket_wallet'
+
 
   
   # Defines the root path route ("/")
