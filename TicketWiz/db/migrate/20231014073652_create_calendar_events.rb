@@ -5,7 +5,6 @@ class CreateCalendarEvents < ActiveRecord::Migration[7.0]
       t.references :customer, null: false, foreign_key: true
       t.references :organiser, null: false, foreign_key: true
 
-      
       t.timestamps
     end
   end

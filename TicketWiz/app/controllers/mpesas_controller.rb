@@ -162,3 +162,4 @@ class MpesasController < ApplicationController
         token
     end
 end
+
