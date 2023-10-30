@@ -28,14 +28,3 @@ group :development do
   # gem "spring"
 end
 
-#added this gem
-gem 'faraday'
-
-# safaricom M-pesa Daraja Api using ruby::daraja
-# gem 'ruby-daraja', git: 'https://github.com/otsembo/ruby-daraja.git'
-# gem 'ruby-daraja', github: 'otsembo/ruby-daraja'
-
-gem 'actionmailer'
-
-
-
