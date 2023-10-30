@@ -11,6 +11,17 @@ class OrganisersController < ApplicationController
       end 
   end
 
+  def dashboard
+    organiser = Organiser.find_by(id: session[:organiser_id])
+    if organiser
+      @events = organiser.events
+      render json: @events
+    else
+      render json: { error: "Not authorized here" }, status: :unauthorized
+    end
+  end
+
+
   def create 
       organiser = Organiser.new(organiser_params)
       
