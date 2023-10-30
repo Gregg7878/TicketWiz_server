@@ -165,8 +165,10 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bcrypt
-  debug
+  actionmailer
+  active_model_serializers (~> 0.10.12)
+  bcrypt (~> 3.1.7)
+  faraday
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
