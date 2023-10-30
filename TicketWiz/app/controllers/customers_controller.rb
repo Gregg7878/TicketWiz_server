@@ -22,6 +22,13 @@ class CustomersController < ApplicationController
         render json: { error: customer.errors.full_messages }, status: :unauthorized 
       end
     end
+
+    def event_history
+      customer_tickets = Ticket.where(customer_id: session[:customer_id])
+      customer_events = customer_tickets.map { |ticket| ticket.event }
+  
+      render json: customer_events, status: :ok
+    end
   
   
     private 

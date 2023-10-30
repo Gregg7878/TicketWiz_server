@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get '/organiser_dashboard', to: 'organisers#dashboard'
 
+  get '/event_history', to: 'customers#event_history'
+
 
   
   # Defines the root path route ("/")
