@@ -1,4 +1,4 @@
 class Mpesa < ApplicationRecord
-    # belongs_to: ticket
+    belongs_to :customer
+    belongs_to :ticket
 end
-

@@ -4,16 +4,14 @@ Rails.application.routes.draw do
   # resources :organisers
   # resources :customers
 
-  post "/signupOrg", to: "organisers#create" 
   post "/signup", to: "customers#create" 
-  get "/meOrg", to: "organisers#show"    
   get "/me", to: "customers#show"
-  post "login", to:"customer_sessions#create"   
+  post "login", to:"customer_sessions#create" 
   delete "/logout", to: "customer_sessions#destroy" 
+  get "/meOrg", to: "organisers#show"    
+  post "/signupOrg", to: "organisers#create" 
   post "loginOrg", to:"organiser_sessions#create"
   delete "/logoutOrg", to: "organiser_sessions#destroy"
-
-  get '/customer_profile', to: 'customers#profile'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -21,6 +19,22 @@ Rails.application.routes.draw do
   resources :payments
   resources :bookings
 
+  get '/featured_events', to: 'events#featured'
+
+  post "stkpush", to: "mpesas#stkpush"
+
+  get '/organiser_dashboard', to: 'organisers#dashboard'
+
+  get '/event_history', to: 'customers#event_history'
+
+  get '/ticket_wallet', to: 'customers#ticket_wallet'
+
+
+  
   # Defines the root path route ("/")
   # root "articles#index"
+
+  resources :calendar_events, only: [:index, :create, :destroy]
+  resources :tickets, only: [:index, :create, :show, :destroy]
+
 end
