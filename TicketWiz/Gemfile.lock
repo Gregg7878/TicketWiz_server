@@ -165,6 +165,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  actionmailer
   bcrypt
   debug
   pg (~> 1.1)
