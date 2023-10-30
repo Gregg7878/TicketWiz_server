@@ -8,6 +8,7 @@ class CustomerSessionsController < ApplicationController
         else
             render json: { errors: "Invalid email or password" }, status: :unauthorized 
         end 
+        
     end
 
     def destroy
@@ -15,3 +16,4 @@ class CustomerSessionsController < ApplicationController
         head :no_content
     end
 end
+
