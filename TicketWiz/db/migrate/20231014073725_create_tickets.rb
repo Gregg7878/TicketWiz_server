@@ -7,7 +7,6 @@ class CreateTickets < ActiveRecord::Migration[7.0]
       t.decimal :price
       t.datetime :purchase_date
 
-      
       t.timestamps
     end
   end
