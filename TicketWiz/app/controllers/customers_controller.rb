@@ -4,6 +4,7 @@ class CustomersController < ApplicationController
 
 
     def show   
+      Rails.logger.debug "Session Data: #{session.inspect}"
       customer = Customer.find_by(id: session[:customer_id]) 
       if customer
           render json: customer, status: :created 
